@@ -1,0 +1,12 @@
+Instructions:
+This package requires Animation Rigging package to be installed.
+Please go to Package Manager > Unity Registry > Install Animation Rigging Package
+
+Controls:
+Movement: WASD / Arrow Keys
+Wheelie: Press and Hold Left Shift while accelerating
+Mouse: Look Around
+
+Reset character in the Ragdoll scenes: 'R'
+
+These controls can be switched to the New Input System. The steps are mentioned in the documentation.
