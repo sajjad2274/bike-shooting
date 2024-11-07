@@ -2422,6 +2422,7 @@ GameObject:
   - component: {fileID: 568364446}
   - component: {fileID: 568364445}
   - component: {fileID: 568364444}
+  - component: {fileID: 568364448}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2517,6 +2518,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &568364448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568364443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb5984b783efec418673b4b74cc602f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &606296118
 GameObject:
   m_ObjectHideFlags: 0
@@ -5670,8 +5683,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ShooterController, Assembly-CSharp
+      - m_Target: {fileID: 568364448}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: Fire
         m_Mode: 1
         m_Arguments:
@@ -6625,7 +6638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0bd700024020f54f986c607786d9df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   stuntCamera: 0
 --- !u!1 &1766970629
 GameObject:
@@ -7869,9 +7881,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WeaponActivation, Assembly-CSharp
-        m_MethodName: ActivateWeapon
+      - m_Target: {fileID: 568364448}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: Weapon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

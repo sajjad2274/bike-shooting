@@ -15202,6 +15202,58 @@ MonoBehaviour:
       x: 1
       y: 1
       z: 1
+--- !u!1 &1554515410256779136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4445769431756340283}
+  - component: {fileID: 1359453383554599712}
+  m_Layer: 0
+  m_Name: WeaponActivation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4445769431756340283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554515410256779136}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7094838062072921310}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1359453383554599712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554515410256779136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32727077a17c1d64a80b312e9aa3b593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHandIK: {fileID: 2208244542655913087}
+  headAiming: {fileID: 3800350456065510664}
+  rightArmAiming: {fileID: 4688321458469303798}
+  rightForearmAiming: {fileID: 1402624114130909290}
+  rightHandAiming: {fileID: 8236262019367207581}
+  rigbuilder: {fileID: 7232476828505253567}
+  weapon: {fileID: 1770781441091233683}
+  isHavingWeapon: 0
 --- !u!1 &1600798757784201194
 GameObject:
   m_ObjectHideFlags: 0
@@ -26569,7 +26621,7 @@ GameObject:
   - component: {fileID: 1275163602113473213}
   - component: {fileID: 442576316452986332}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27415,6 +27467,7 @@ Transform:
   - {fileID: 5572143177441941492}
   - {fileID: 4169010778289883470}
   - {fileID: 6932751392379028953}
+  - {fileID: 4445769431756340283}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4900033964739709215
@@ -27635,6 +27688,7 @@ MonoBehaviour:
     groundSnapSensitivity: 0
   wheelieInput: 0
   wheeliePower: 0
+  isLocalPlayer: 0
 --- !u!114 &3212439077367481123
 MonoBehaviour:
   m_ObjectHideFlags: 0

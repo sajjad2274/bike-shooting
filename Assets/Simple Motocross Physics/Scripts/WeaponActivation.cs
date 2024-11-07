@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-public class WeaponActivation : MonoBehaviour
+using Unity.Netcode;
+public class WeaponActivation : NetworkBehaviour
 {
     [SerializeField] private TwoBoneIKConstraint rightHandIK;
     [SerializeField] private MultiAimConstraint headAiming;
@@ -54,20 +55,5 @@ public class WeaponActivation : MonoBehaviour
         rightForearmAiming.weight = 0;
         ShooterController.shootingInstance.SettingLayer(0);
     }
-    //private IEnumerator SmoothRigWeight()
-    //{
-    //    aimHandRig.weight = 0;
-    //    yield return new WaitForEndOfFrame(); // Ensure one frame passes before re-enabling
-    //    aimHandRig.weight = 1;
-    //}
-    /*public void ChangeTarget(Transform newTarget)
-    {
-      
-        if (rigbuilder != null)
-        {
-            rigbuilder.Build();
-        }
-        aimHandRig.data.target = newTarget;
-       
-    }*/
+  
 }
