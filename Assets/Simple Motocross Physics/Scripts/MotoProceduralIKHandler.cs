@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using Unity.Netcode;
 namespace SMPScripts
 {
     [System.Serializable]
@@ -13,7 +14,7 @@ namespace SMPScripts
         public float speedScale;
     }
 
-    public class MotoProceduralIKHandler : MonoBehaviour
+    public class MotoProceduralIKHandler : NetworkBehaviour
     {
         MotoController motoController;
         MotoAnimController motoAnimController;
@@ -68,6 +69,7 @@ namespace SMPScripts
         // Update is called once per frame
         void Update()
         {
+            if (!IsOwner) return;
             //Weights
             chestRange.weight = Mathf.Clamp(motoController.pickUpSpeed, chestIKRange.x, chestIKRange.y);
             hipRange.weight = Mathf.Clamp(motoController.pickUpSpeed, hipIKRange.x, hipIKRange.y);

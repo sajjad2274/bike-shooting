@@ -39,7 +39,11 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private Camera cam;
 
     private Vector2 input = Vector2.zero;
-
+    public static Joystick joystickInstance;
+    private void Awake()
+    {
+        joystickInstance= this;
+    }
     protected virtual void Start()
     {
         HandleRange = handleRange;
@@ -128,6 +132,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         }
         return 0;
     }
+  
 
     public virtual void OnPointerUp(PointerEventData eventData)
     {

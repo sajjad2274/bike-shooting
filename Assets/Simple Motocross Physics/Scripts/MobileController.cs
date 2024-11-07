@@ -7,7 +7,7 @@ namespace SMPScripts
     public class MobileController : MonoBehaviour
     {
         MotoController motoController;
-        public Joystick joystick;  // Reference to the Joystick
+        //public Joystick joystick;  // Reference to the Joystick
 
         void Start()
         {
@@ -16,8 +16,8 @@ namespace SMPScripts
 
         void FixedUpdate()
         {
-            float horizontalInput = joystick.Horizontal;
-            float verticalInput = joystick.Vertical;
+            float horizontalInput = Joystick.joystickInstance.Horizontal;
+            float verticalInput = Joystick.joystickInstance.Vertical;
 
             // Define a higher sensitivity multiplier for faster rotation
             float rotationSensitivityMultiplier = 3.0f;  // You can tweak this value

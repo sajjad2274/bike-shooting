@@ -21,16 +21,16 @@ namespace SMPScripts
             {
                 if (externalCharacter.activeInHierarchy)
                 {
-                    motoCamera.target = externalCharacter.transform;
+                    //motoCamera.target = externalCharacter.transform;
                 }
             }
             else if (motoStatus.dislodged && motoStatus.instantiatedRagdoll!=null)
             {
-                motoCamera.target = motoStatus.instantiatedRagdoll.transform.Find("mixamorig:Hips").gameObject.transform;
+                //motoCamera.target = motoStatus.instantiatedRagdoll.transform.Find("mixamorig:Hips").gameObject.transform;
             }
             else
             {
-                motoCamera.target = target.transform.root.transform;
+               // motoCamera.target = target.transform.root.transform;
             }
         }
     }

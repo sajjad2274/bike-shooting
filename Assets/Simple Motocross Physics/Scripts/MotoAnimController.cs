@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-namespace SMPScripts
+using SMPScripts;
+using Unity.Netcode;
+
+    public class MotoAnimController : NetworkBehaviour
 {
-    public class MotoAnimController : MonoBehaviour
-    {
         MotoController motoController;
         Animator anim;
         string clipInfoCurrent, clipInfoLast;
@@ -22,6 +23,7 @@ namespace SMPScripts
         public GameObject characterGeometry;
         public GameObject externalCharacter;
         float waitTime;
+        bool isKikPerformed=false;
         void Start()
         {
             motoController = FindObjectOfType<MotoController>();
@@ -39,7 +41,8 @@ namespace SMPScripts
 
         void Update()
         {
-            if (characterGeometry != null && externalCharacter != null)
+        if (!IsOwner) return;
+        if (characterGeometry != null && externalCharacter != null)
             {
                 if (Input.GetKeyDown(KeyCode.Return) && motoController.transform.InverseTransformDirection(motoController.rb.velocity).z <= 0.1f && waitTime == 0)
                 {
@@ -128,8 +131,17 @@ namespace SMPScripts
 
         public void PlayKickAnimation()
         {
-            anim.SetBool("Kick", true);  // Set Kick to true to trigger the animation
-            StartCoroutine(ResetKickParameter());
+
+            isKikPerformed = !isKikPerformed;
+        if (isKikPerformed)
+        {
+            anim.SetBool("Kick", true);
+        }
+        else
+        {
+            anim.SetBool("Kick", false);
+        }
+           // StartCoroutine(ResetKickParameter());
         }
 
         private IEnumerator ResetKickParameter()
@@ -178,4 +190,4 @@ namespace SMPScripts
 
         }
     }
-}
+
