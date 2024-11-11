@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using Unity.Netcode;
+using Unity.VisualScripting;
 public class WeaponActivation : NetworkBehaviour
 {
     [SerializeField] private TwoBoneIKConstraint rightHandIK;
@@ -19,9 +20,11 @@ public class WeaponActivation : NetworkBehaviour
     private void Start()
     {
         weaponInstance = this;
+
     }
     private void Update()
     {
+
         if (isHavingWeapon == false)
         {
             weapon.SetActive(false);
@@ -29,22 +32,34 @@ public class WeaponActivation : NetworkBehaviour
     }
     public void ActivateWeapon()
     {
+        if (!IsOwner) return;
         isHavingWeapon = !isHavingWeapon;
         if (isHavingWeapon)
         {
-            weapon.SetActive(true);
-            rightHandIK.weight = 0;
-            headAiming.weight = 1;
-            rightHandAiming.weight = 1;
-            rightArmAiming.weight = 1;
-            rightForearmAiming.weight = 1;
-            ShooterController.shootingInstance.SettingLayer(1);
+            WeaponServerRpc();
         }
         else
         {
             DeactivateWeapon();
         }
     }
+    [ServerRpc(RequireOwnership = false)]
+    public void WeaponServerRpc()
+    {
+        WeaponClientRpc();
+    }
+    [ClientRpc]
+    public void WeaponClientRpc()
+    {
+        weapon.SetActive(true);
+        rightHandIK.weight = 0;
+        headAiming.weight = 1;
+        rightHandAiming.weight = 1;
+        rightArmAiming.weight = 1;
+        rightForearmAiming.weight = 1;
+        ShooterController.shootingInstance.SettingLayer(1);
+    }
+
     public void DeactivateWeapon()
     {
         weapon.SetActive(false);
@@ -54,6 +69,7 @@ public class WeaponActivation : NetworkBehaviour
         rightArmAiming.weight = 0;
         rightForearmAiming.weight = 0;
         ShooterController.shootingInstance.SettingLayer(0);
+
     }
-  
+
 }

@@ -1,57 +1,57 @@
-using UnityEngine;
-using System.Collections;
-using SMPScripts;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using Unity.Netcode;
 
-public class MotoCamera : NetworkBehaviour
+using UnityEngine;
+using Unity.Netcode;
+using SMPScripts;
+
+public class MotoCamera : MonoBehaviour
 {
-    Transform target;
+    private Transform target;
     public bool stuntCamera;
     private float distance = 4.5f;
     private float height = 2.81f;
     private float heightDamping = 100f;
-
     private float lookAtHeight = 1.87f;
-
     private float rotationSnapTime = 0.5f;
 
-
     private Vector3 lookAtVector;
-
     private float usedDistance;
-
     float wantedRotationAngle;
     float wantedHeight;
-
     float currentRotationAngle;
     float currentHeight;
-
     Vector3 wantedPosition;
-
     private float yVelocity = 0.0F;
     private float zVelocity = 0.0F;
-    MotoPerfectMouseLook perfectMouseLook;
+    private MotoPerfectMouseLook perfectMouseLook;
 
-
-
-    void Start()
+    private void Start()
     {
         perfectMouseLook = GetComponent<MotoPerfectMouseLook>();
 
-        // Find the local player’s MotoController
+
+        NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+    }
+
+    private void OnClientConnected(ulong clientId)
+    {
+
+        if (NetworkManager.Singleton.LocalClientId == clientId)
+        {
+            SetLocalPlayerCameraTarget();
+        }
+    }
+
+    private void SetLocalPlayerCameraTarget()
+    {
+
         MotoController[] players = GameObject.FindObjectsOfType<MotoController>();
         foreach (MotoController player in players)
         {
-            if (player.isLocalPlayer)  
+            if (MotoController.LocalInstance.IsLocalPlayer)
             {
                 SetCameraTarget(player);
                 break;
             }
-            //if (player.GetComponent<NetworkObject>().IsLocalPlayer)
-            //{
-            //    cameraFollow.target = player.transform;
-            //}
         }
     }
 
@@ -69,11 +69,12 @@ public class MotoCamera : NetworkBehaviour
         }
         else
         {
+
             target = player.transform;
         }
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (target != null)
         {
@@ -82,7 +83,7 @@ public class MotoCamera : NetworkBehaviour
 
             wantedRotationAngle = target.eulerAngles.y;
             currentRotationAngle = transform.eulerAngles.y;
-            if (perfectMouseLook.movement == false)
+            if (perfectMouseLook != null && !perfectMouseLook.movement)
                 currentRotationAngle = Mathf.SmoothDampAngle(currentRotationAngle, wantedRotationAngle, ref yVelocity, rotationSnapTime);
 
             currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.fixedDeltaTime);
@@ -91,19 +92,21 @@ public class MotoCamera : NetworkBehaviour
             wantedPosition.y = currentHeight;
 
             usedDistance = Mathf.SmoothDampAngle(usedDistance, distance, ref zVelocity, 0.1f);
-
             wantedPosition += Quaternion.Euler(0, currentRotationAngle, 0) * new Vector3(0, 0, -usedDistance);
 
-
             transform.position = wantedPosition;
-
             transform.LookAt(target.position + lookAtVector);
 
             lookAtVector = new Vector3(0, lookAtHeight, 0);
         }
-
-
     }
 
-}
+    private void OnDestroy()
+    {
 
+        if (NetworkManager.Singleton != null)
+        {
+            NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
+        }
+    }
+}

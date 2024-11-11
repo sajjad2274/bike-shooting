@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class AimCamera : MonoBehaviour
 {
-     Camera camera;
+     Camera mmainCamera;
 
     // Define the bottom-right area as a percentage of screen size
     [Range(0, 1)] public float screenWidth = 0.75f;
@@ -13,7 +13,7 @@ public class AimCamera : MonoBehaviour
 
     private void Start()
     {
-        camera = Camera.main;
+        mmainCamera = Camera.main;
     }
     private void Update()
     {
@@ -45,7 +45,7 @@ public class AimCamera : MonoBehaviour
         }
 
         // Calculate the aiming position
-        Ray ray = camera.ScreenPointToRay(screenPosition);
+        Ray ray = mmainCamera.ScreenPointToRay(screenPosition);
         transform.position = ray.GetPoint(10);
     }
 

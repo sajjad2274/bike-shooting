@@ -14865,6 +14865,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &1024723401327421195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4512736260822211015}
+  m_Layer: 0
+  m_Name: TransformForGun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4512736260822211015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024723401327421195}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.45199925, y: 0.5631329, z: 0.531887, w: 0.44235078}
+  m_LocalPosition: {x: -0.01800003, y: 0.204, z: 0.021999998}
+  m_LocalScale: {x: 0.15341, y: 0.15341, z: 0.15341}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6283705652357618689}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1256640829682051492
 GameObject:
   m_ObjectHideFlags: 0
@@ -15190,8 +15221,8 @@ MonoBehaviour:
         transform: {fileID: 0}
         weight: 0
     m_Offset: {x: 0, y: 0, z: 0}
-    m_MinLimit: -180
-    m_MaxLimit: 180
+    m_MinLimit: -90
+    m_MaxLimit: 90
     m_AimAxis: 2
     m_UpAxis: 4
     m_WorldUpType: 0
@@ -15212,7 +15243,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4445769431756340283}
   - component: {fileID: 1359453383554599712}
-  - component: {fileID: 3635265901092947753}
   m_Layer: 0
   m_Name: WeaponActivation
   m_TagString: Untagged
@@ -15255,27 +15285,6 @@ MonoBehaviour:
   rigbuilder: {fileID: 7232476828505253567}
   weapon: {fileID: 1770781441091233683}
   isHavingWeapon: 0
---- !u!114 &3635265901092947753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1554515410256779136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 234490092
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!1 &1600798757784201194
 GameObject:
   m_ObjectHideFlags: 0
@@ -15411,7 +15420,7 @@ MonoBehaviour:
   muzleFlash: {fileID: 557211061328117371}
   hitEffect: {fileID: 8465896423149698587}
   raycastOrigin: {fileID: 8630416482894895444}
-  crossHairTarget: {fileID: 0}
+  crossHairTarget: {fileID: 5664138248549702667}
   bullettracer: {fileID: 4523402362047150243, guid: 71f10303df4901949b004005d6051b46, type: 3}
   anim: {fileID: 198145954962565321}
 --- !u!1 &1791939095511884468
@@ -25978,8 +25987,8 @@ MonoBehaviour:
         transform: {fileID: 0}
         weight: 0
     m_Offset: {x: 0, y: 0, z: 0}
-    m_MinLimit: -180
-    m_MaxLimit: 180
+    m_MinLimit: -90
+    m_MaxLimit: 90
     m_AimAxis: 2
     m_UpAxis: 0
     m_WorldUpType: 0
@@ -26527,8 +26536,8 @@ MonoBehaviour:
         transform: {fileID: 0}
         weight: 0
     m_Offset: {x: 0, y: 0, z: 0}
-    m_MinLimit: -180
-    m_MaxLimit: 180
+    m_MinLimit: -90
+    m_MaxLimit: 90
     m_AimAxis: 2
     m_UpAxis: 4
     m_WorldUpType: 0
@@ -27336,6 +27345,7 @@ Transform:
   - {fileID: 3997925637536829236}
   - {fileID: 6973439492096809590}
   - {fileID: 3433902462766968032}
+  - {fileID: 4512736260822211015}
   - {fileID: 2258465778817330318}
   m_Father: {fileID: 4585918259379485563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27452,7 +27462,7 @@ GameObject:
   - component: {fileID: 5649288458174174473}
   - component: {fileID: 3212439077367481123}
   - component: {fileID: 7595212469438237319}
-  - component: {fileID: 1172417049607046200}
+  - component: {fileID: 3654710379568383909}
   m_Layer: 0
   m_Name: DirtBike 1
   m_TagString: Untagged
@@ -27744,7 +27754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b500c4d201543e3468d3f7bf1aaf828b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1172417049607046200
+--- !u!114 &3654710379568383909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -28079,8 +28089,8 @@ MonoBehaviour:
         transform: {fileID: 0}
         weight: 0
     m_Offset: {x: 0, y: 0, z: 0}
-    m_MinLimit: -180
-    m_MaxLimit: 180
+    m_MinLimit: -45
+    m_MaxLimit: 45
     m_AimAxis: 4
     m_UpAxis: 2
     m_WorldUpType: 0
@@ -28265,7 +28275,7 @@ Transform:
   m_GameObject: {fileID: 6068114377147661803}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.527, z: 1.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28389,7 +28399,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6295176310027944222}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: d0e827eba75411e4798c01eb9738b3ff, type: 2}
   m_audioClip: {fileID: 8300000, guid: 39483f32d7c2c4e4f9af8455918c3674, type: 3}

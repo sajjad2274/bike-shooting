@@ -457,30 +457,40 @@ using Unity.Netcode;
         InputAction movement, wheelieInputAction;
         Vector2 movementDirection;
         public bool isLocalPlayer;
-
-    void Awake()
+        public static MotoController LocalInstance { get; private set; }
+        void Awake()
         {
-            motoInputActions = new MotoInputActions();
+        //if (!IsLocalPlayer) return;
+        motoInputActions = new MotoInputActions();
             transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         }
-
+    
         void OnEnable()
         {
-            movement = motoInputActions.Player.Move;
+       // if (!IsLocalPlayer) return;
+        movement = motoInputActions.Player.Move;
             movement.Enable();
             wheelieInputAction = motoInputActions.Player.Wheelie;
             wheelieInputAction.Enable();
         }
-        void onDisable()
+        void OnDisable()
         {
             movement.Disable();
             wheelieInputAction.Disable();
 
         }
-
-        void Start()
+    public override void OnNetworkSpawn()
+    {
+        if (IsOwner)
         {
-            rb = GetComponent<Rigidbody>();
+            LocalInstance= this;
+        }
+    }
+
+    void Start()
+        {
+      
+        rb = GetComponent<Rigidbody>();
             rb.maxAngularVelocity = Mathf.Infinity;
 
             fWheelRb = motoGeometry.fPhysicsWheel.GetComponent<Rigidbody>();
@@ -510,9 +520,9 @@ using Unity.Netcode;
 
         void FixedUpdate()
         {
-
-            //Physics based Steering Control.
-            motoGeometry.fPhysicsWheel.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + customSteerAxis * steerAngle.Evaluate(rb.velocity.magnitude), 0);
+       // if (!IsLocalPlayer) return;
+        //Physics based Steering Control.
+        motoGeometry.fPhysicsWheel.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + customSteerAxis * steerAngle.Evaluate(rb.velocity.magnitude), 0);
             fPhysicsWheelConfigJoint.axis = new Vector3(1, 0, 0);
   
         if (motoGeometry.secondaryFVisualWheel && motoGeometry.secondaryFPhysicsWheel)

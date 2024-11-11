@@ -13,8 +13,12 @@ EditorBuildSettings:
     path: Assets/Simple Motocross Physics/Scenes/Mobile Controls/Mobile Motocross
       Standard Setup 1.unity
     guid: 2e8eea25ab4926c408e83bae15017397
-  - enabled: 1
+  - enabled: 0
     path: Assets/Simple Motocross Physics/Scenes/Mobile Controls/Mobile Motocross
       Standard Setup.unity
     guid: 1c565a2f605b3ca40a510e510915f826
+  - enabled: 1
+    path: Assets/Simple Motocross Physics/Scenes/Mobile Controls/Mobile Motocross
+      Standard Setup Multiplayer.unity
+    guid: 038648a74a735e6488cecf473eb20d01
   m_configObjects: {}
