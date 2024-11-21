@@ -14522,7 +14522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4582062929240676203
 Transform:
   m_ObjectHideFlags: 0
@@ -14628,7 +14628,9 @@ MonoBehaviour:
   muzleFlash: {fileID: 2844854257755702686}
   hitEffect: {fileID: 6178244539078034942}
   raycastOrigin: {fileID: 6270146808975483569}
+  crossHairTarget: {fileID: 0}
   bullettracer: {fileID: 4523402362047150243, guid: 71f10303df4901949b004005d6051b46, type: 3}
+  anim: {fileID: 0}
 --- !u!1 &4394049755144318055
 GameObject:
   m_ObjectHideFlags: 0

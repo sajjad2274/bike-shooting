@@ -7,12 +7,12 @@ public class UIManager : NetworkBehaviour
 {
     public void Fire()
     {
-        ShooterController.shootingInstance.Fire();
+      //  ShooterController.shootingInstance.Fire();
     }
     public void Weapon()
     {
-       //  if (IsOwner) return;
-
+        //  if (IsOwner) return;
+       // WeaponActivation.weaponInstance.isHavingWeapon.OnValueChanged += WeaponActivation.weaponInstance.OnWeaponStateChanged;
         WeaponActivation.weaponInstance.ActivateWeapon();
     }
    
